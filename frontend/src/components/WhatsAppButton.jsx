@@ -4,6 +4,7 @@ import '../styles/WhatsAppButton.css';
 
 function WhatsAppButton() {
   const [whatsappNumber, setWhatsappNumber] = useState('');
+  const [whatsappMessage, setWhatsappMessage] = useState('');
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -22,6 +23,9 @@ function WhatsAppButton() {
         if (settings.contactInfo?.whatsapp) {
           setWhatsappNumber(settings.contactInfo.whatsapp);
         }
+        if (settings.contactInfo?.whatsappMessage) {
+          setWhatsappMessage(settings.contactInfo.whatsappMessage);
+        }
       }
     } catch (error) {
       console.error('Error fetching WhatsApp number:', error);
@@ -36,7 +40,7 @@ function WhatsAppButton() {
     
     // Pre-filled message
     const message = encodeURIComponent(
-      "Bună! Sunt interesat/ă de arborii dumneavoastră decorativi. Puteți să îmi oferiți mai multe informații?"
+      whatsappMessage || "Bună! Sunt interesat/ă de arborii dumneavoastră decorativi. Puteți să îmi oferiți mai multe informații?"
     );
     
     // WhatsApp URL (works on both mobile and desktop)

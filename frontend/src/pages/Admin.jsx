@@ -53,7 +53,8 @@ function Admin() {
       email: '',
       address: '',
       hours: '',
-      whatsapp: ''
+      whatsapp: '',
+      whatsappMessage: ''
     },
     socialLinks: {
       facebook: '',
@@ -605,7 +606,7 @@ function Admin() {
                           onChange={(e) => handleImageChange(e, true)}
                           className="file-input"
                         />
-                        <p className="upload-help">Select multiple images to add them to the product</p>
+                        
                       </div>
                       
                       <textarea
@@ -1030,6 +1031,22 @@ function Admin() {
                   />
                   <small style={{color: '#666', fontSize: '0.9rem', display: 'block', marginTop: '5px'}}>
                     Acest număr va fi folosit pentru butonul de contact WhatsApp. Includeți codul de țară.
+                  </small>
+                </div>
+
+                <div className="form-group">
+                  <label>Text predefinit WhatsApp:</label>
+                  <textarea
+                    value={settings.contactInfo?.whatsappMessage || ''}
+                    onChange={(e) => setSettings({
+                      ...settings,
+                      contactInfo: { ...settings.contactInfo, whatsappMessage: e.target.value }
+                    })}
+                    placeholder="Bună! Sunt interesat/ă de arborii dumneavoastră decorativi. Puteți să îmi oferiți mai multe informații?"
+                    rows="3"
+                  />
+                  <small style={{color: '#666', fontSize: '0.9rem', display: 'block', marginTop: '5px'}}>
+                    Acest mesaj va fi precompletat când utilizatorii dau click pe butonul WhatsApp.
                   </small>
                 </div>
 
