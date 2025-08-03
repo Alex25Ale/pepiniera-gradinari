@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import API_BASE_URL from '../config';
 import '../styles/Admin.css';
 
 function Admin() {
@@ -65,7 +66,7 @@ function Admin() {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:5000/api/admin/login', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials)
@@ -95,7 +96,7 @@ function Admin() {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/products');
+      const response = await fetch(`${API_BASE_URL}/api/products`);
       if (response.ok) {
         const data = await response.json();
         setProducts(data);
@@ -117,7 +118,7 @@ function Admin() {
 
   const fetchSettings = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/settings');
+      const response = await fetch(`${API_BASE_URL}/api/settings`);
       if (response.ok) {
         const data = await response.json();
         setSettings(data);
@@ -129,7 +130,7 @@ function Admin() {
 
   const updateSettings = async (newSettings) => {
     try {
-      const response = await fetch('http://localhost:5000/api/settings', {
+      const response = await fetch(`${API_BASE_URL}/api/settings`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -206,7 +207,7 @@ function Admin() {
         const formData = new FormData();
         formData.append('image', file);
         
-        const response = await fetch('http://localhost:5000/api/upload', {
+        const response = await fetch(`${API_BASE_URL}/api/upload`, {
           method: 'POST',
           body: formData
         });
@@ -240,7 +241,7 @@ function Admin() {
         images: uploadedUrls.length > 0 ? uploadedUrls : []
       };
       
-      const response = await fetch('http://localhost:5000/api/products', {
+      const response = await fetch(`${API_BASE_URL}/api/products`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -266,7 +267,7 @@ function Admin() {
   const handleDeleteProduct = async (id) => {
     if (confirm('Sunteți sigur că doriți să ștergeți acest produs?')) {
       try {
-        const response = await fetch(`http://localhost:5000/api/products/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/api/products/${id}`, {
           method: 'DELETE'
         });
         
@@ -322,7 +323,7 @@ function Admin() {
         images: allImages
       };
       
-      const response = await fetch(`http://localhost:5000/api/products/${editingProduct.id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/products/${editingProduct.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -660,7 +661,7 @@ function Admin() {
                           onChange={async (e) => {
                             const updatedProduct = { ...product, featured: e.target.checked };
                             try {
-                              const response = await fetch(`http://localhost:5000/api/products/${product.id}`, {
+                              const response = await fetch(`${API_BASE_URL}/api/products/${product.id}`, {
                                 method: 'PUT',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify(updatedProduct)
@@ -759,7 +760,7 @@ function Admin() {
                       formData.append('image', file);
                       
                       try {
-                        const response = await fetch('http://localhost:5000/api/upload', {
+                        const response = await fetch(`${API_BASE_URL}/api/upload`, {
                           method: 'POST',
                           body: formData
                         });

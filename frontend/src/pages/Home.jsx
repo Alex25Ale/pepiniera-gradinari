@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ImageCarousel from '../components/ImageCarousel';
+import API_BASE_URL from '../config';
 import '../styles/Home.css';
 
 function Home() {
@@ -14,7 +15,7 @@ function Home() {
 
   const fetchFeaturedTrees = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/products/featured');
+      const response = await fetch(`${API_BASE_URL}/api/products/featured`);
       if (response.ok) {
         const data = await response.json();
         setFeaturedTrees(data);

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ImageCarousel from '../components/ImageCarousel';
+import API_BASE_URL from '../config';
 import '../styles/ProductDetail.css';
 
 function ProductDetail() {
@@ -16,7 +17,7 @@ function ProductDetail() {
 
   const fetchProduct = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/products/${id}`);
+      const response = await fetch(`${API_BASE_URL}/api/products/${id}`);
       if (response.ok) {
         const data = await response.json();
         setProduct(data);
