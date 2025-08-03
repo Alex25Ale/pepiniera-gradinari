@@ -120,3 +120,26 @@
     gap: 2rem;
   }
 }
+
+@media (max-width: 480px) {
+  .contact-container {
+    padding: 1rem;
+  }
+
+  .contact h1 {
+    font-size: 2rem;
+  }
+
+  .contact-info h2 {
+    font-size: 1.3rem;
+  }
+
+  .contact-item h3 {
+    font-size: 1rem;
+  }
+
+  .social-links a {
+    padding: 8px;
+    font-size: 14px;
+  }
+}

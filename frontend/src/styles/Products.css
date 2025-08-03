@@ -211,4 +211,45 @@
   .products-grid {
     grid-template-columns: 1fr;
   }
+
+  .category-filter {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .category-filter button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-container {
+    padding: 1rem;
+  }
+
+  .products-header h1 {
+    font-size: 2rem;
+  }
+
+  .category-filter {
+    justify-content: center;
+  }
+
+  .category-filter button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .product-card {
+    padding: 1rem;
+  }
+
+  .product-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .product-card .price {
+    font-size: 1rem;
+  }
 }

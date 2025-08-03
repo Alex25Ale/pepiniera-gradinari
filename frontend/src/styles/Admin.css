@@ -572,6 +572,7 @@
   
   .product-actions {
     justify-content: center;
+    flex-wrap: wrap;
   }
   
   .admin-tabs {
@@ -587,6 +588,80 @@
   }
   
   .social-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Fix edit product modal for mobile */
+  .edit-product,
+  .edit-product-inline {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .edit-product-inline .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-product-inline button[type="submit"] {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .edit-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .edit-actions button {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .cancel-btn {
+    padding: 12px 15px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-container {
+    padding: 1rem;
+  }
+
+  .login-container {
+    padding: 1.5rem;
+  }
+
+  .admin-tabs {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .admin-tabs button {
+    font-size: 14px;
+    padding: 12px 15px;
+  }
+
+  .add-product {
+    padding: 1rem;
+  }
+
+  .add-product h2 {
+    font-size: 1.2rem;
+  }
+
+  .product-actions button {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .edit-product h2,
+  .edit-product-inline h3 {
+    font-size: 1.1rem;
+  }
+
+  .featured-products-grid {
     grid-template-columns: 1fr;
   }
 }
