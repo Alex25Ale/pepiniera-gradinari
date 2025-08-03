@@ -7,6 +7,7 @@ const sharp = require('sharp');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const BASE_URL = process.env.BASE_URL || 'https://pepiniera-gradinari-production.up.railway.app';
 
 // Middleware
 app.use(cors());
@@ -56,64 +57,8 @@ const upload = multer({
 
 // Initialize data files if they don't exist
 if (!fs.existsSync(DATA_FILE)) {
-  const initialProducts = [
-    {
-      id: 1,
-      name: "Royal Palm",
-      category: "Palm Trees",
-      description: "Majestic royal palm tree, perfect for creating tropical ambiance in your garden",
-      price: "€150",
-      discountedPrice: null,
-      images: ["http://localhost:5000/images/royal-palm.jpg"],
-      image: "http://localhost:5000/images/royal-palm.jpg",
-      featured: true
-    },
-    {
-      id: 2,
-      name: "Christmas Pine",
-      category: "Christmas Trees", 
-      description: "Fresh Norwegian pine, ideal for Christmas decorations with wonderful aroma",
-      price: "€45",
-      discountedPrice: "€35",
-      images: ["http://localhost:5000/images/christmas-pine.jpg"],
-      image: "http://localhost:5000/images/christmas-pine.jpg",
-      featured: true
-    },
-    {
-      id: 3,
-      name: "Decorative Olive",
-      category: "Ornamental Trees",
-      description: "Authentic Mediterranean olive tree for elegant garden decoration",
-      price: "€120",
-      discountedPrice: null,
-      images: ["http://localhost:5000/images/olive-tree.jpg"],
-      image: "http://localhost:5000/images/olive-tree.jpg",
-      featured: true
-    },
-    {
-      id: 4,
-      name: "Japanese Maple",
-      category: "Ornamental Trees",
-      description: "Beautiful red Japanese maple providing stunning autumn colors",
-      price: "€100",
-      discountedPrice: "€85",
-      images: ["http://localhost:5000/images/japanese-maple.jpg"],
-      image: "http://localhost:5000/images/japanese-maple.jpg",
-      featured: false
-    },
-    {
-      id: 5,
-      name: "Phoenix Palm",
-      category: "Palm Trees",
-      description: "Hardy Phoenix palm perfect for outdoor landscaping",
-      price: "€95",
-      discountedPrice: null,
-      images: ["http://localhost:5000/images/phoenix-palm.jpg"],
-      image: "http://localhost:5000/images/phoenix-palm.jpg",
-      featured: false
-    }
-  ];
-  fs.writeFileSync(DATA_FILE, JSON.stringify(initialProducts, null, 2));
+  // Initialize with empty products array
+  fs.writeFileSync(DATA_FILE, JSON.stringify([], null, 2));
 }
 
 if (!fs.existsSync(ADMIN_FILE)) {
@@ -269,12 +214,12 @@ app.post('/api/upload', upload.single('image'), async (req, res) => {
     // Delete original file to save space
     fs.unlinkSync(originalPath);
     
-    const imageUrl = `http://localhost:5000/uploads/${optimizedFilename}`;
+    const imageUrl = `${BASE_URL}/uploads/${optimizedFilename}`;
     res.json({ imageUrl });
   } catch (error) {
     console.error('Image optimization error:', error);
     // Fallback to original file if optimization fails
-    const imageUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+    const imageUrl = `${BASE_URL}/uploads/${req.file.filename}`;
     res.json({ imageUrl });
   }
 });

@@ -13,15 +13,15 @@
       "🌸 Arbuști & Flori – Culoare, parfum și viață pentru orice spațiu",
       "🌱 Plante direct de la producător – Calitate fără compromis și prețuri corecte"
     ],
-    "image": "http://localhost:5000/uploads/1754168123849-418319167.jpg",
+    "image": "https://pepiniera-gradinari-production.up.railway.app/uploads/1754168123849-418319167.jpg",
     "expertiseTitle": "De ce să alegi Pepiniera Grădinari?"
   },
   "contactInfo": {
-    "phone": "+40 123 456 789",
-    "email": "info@pepiniera.ro",
-    "address": "Str. Gradinarilor nr. 15\nCluj-Napoca, Romania",
-    "hours": "Monday - Friday: 8:00 - 18:00\nSaturday: 9:00 - 16:00\nSunday: Closed",
-    "whatsapp": "+40784400969"
+    "phone": "0764 952 289",
+    "email": "contact@pepiniera-gradinari.ro",
+    "address": "Strada Magnoliilor nr. 158\nComuna Grădinari, Județul Giurgiu",
+    "hours": "Luni - Vineri: 8:00 - 18:00\nSâmbătă: 9:00 - 16:00\nDuminică: Închis",
+    "whatsapp": "0764952289"
   },
   "socialLinks": {
     "tiktok": "https://www.tiktok.com/@pepiniera.gradinari",
