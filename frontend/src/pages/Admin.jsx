@@ -38,16 +38,8 @@ function Admin() {
       contactButton: ''
     },
     buttonTexts: {
-      exploreCollection: '',
-      viewContactDetails: '',
-      viewDetails: '',
       backToProducts: '',
-      exploreMoreProducts: '',
-      addProduct: '',
-      updateProduct: '',
-      deleteProduct: '',
-      cancel: '',
-      save: ''
+      exploreMoreProducts: ''
     },
     aboutContent: {
       title: '',
@@ -754,53 +746,7 @@ function Admin() {
                 />
               </div>
 
-              <div className="content-section">
-                <label>Explorează Colecția:</label>
-                <input
-                  type="text"
-                  value={settings.buttonTexts?.exploreCollection || ''}
-                  onChange={(e) => setSettings({
-                    ...settings,
-                    buttonTexts: {
-                      ...settings.buttonTexts,
-                      exploreCollection: e.target.value
-                    }
-                  })}
-                  placeholder="Explorează Colecția Noastră"
-                />
-              </div>
 
-              <div className="content-section">
-                <label>Vezi Detalii de Contact:</label>
-                <input
-                  type="text"
-                  value={settings.buttonTexts?.viewContactDetails || ''}
-                  onChange={(e) => setSettings({
-                    ...settings,
-                    buttonTexts: {
-                      ...settings.buttonTexts,
-                      viewContactDetails: e.target.value
-                    }
-                  })}
-                  placeholder="Vezi Detalii de Contact"
-                />
-              </div>
-
-              <div className="content-section">
-                <label>Vezi Detalii:</label>
-                <input
-                  type="text"
-                  value={settings.buttonTexts?.viewDetails || ''}
-                  onChange={(e) => setSettings({
-                    ...settings,
-                    buttonTexts: {
-                      ...settings.buttonTexts,
-                      viewDetails: e.target.value
-                    }
-                  })}
-                  placeholder="Vezi Detalii"
-                />
-              </div>
 
               <div className="content-section">
                 <label>Înapoi la Produse:</label>
@@ -834,85 +780,7 @@ function Admin() {
                 />
               </div>
 
-              <div className="content-section">
-                <label>Adaugă Produs:</label>
-                <input
-                  type="text"
-                  value={settings.buttonTexts?.addProduct || ''}
-                  onChange={(e) => setSettings({
-                    ...settings,
-                    buttonTexts: {
-                      ...settings.buttonTexts,
-                      addProduct: e.target.value
-                    }
-                  })}
-                  placeholder="Adaugă Produs"
-                />
-              </div>
 
-              <div className="content-section">
-                <label>Actualizează Produs:</label>
-                <input
-                  type="text"
-                  value={settings.buttonTexts?.updateProduct || ''}
-                  onChange={(e) => setSettings({
-                    ...settings,
-                    buttonTexts: {
-                      ...settings.buttonTexts,
-                      updateProduct: e.target.value
-                    }
-                  })}
-                  placeholder="Actualizează Produs"
-                />
-              </div>
-
-              <div className="content-section">
-                <label>Șterge Produs:</label>
-                <input
-                  type="text"
-                  value={settings.buttonTexts?.deleteProduct || ''}
-                  onChange={(e) => setSettings({
-                    ...settings,
-                    buttonTexts: {
-                      ...settings.buttonTexts,
-                      deleteProduct: e.target.value
-                    }
-                  })}
-                  placeholder="Șterge Produs"
-                />
-              </div>
-
-              <div className="content-section">
-                <label>Anulează:</label>
-                <input
-                  type="text"
-                  value={settings.buttonTexts?.cancel || ''}
-                  onChange={(e) => setSettings({
-                    ...settings,
-                    buttonTexts: {
-                      ...settings.buttonTexts,
-                      cancel: e.target.value
-                    }
-                  })}
-                  placeholder="Anulează"
-                />
-              </div>
-
-              <div className="content-section">
-                <label>Salvează:</label>
-                <input
-                  type="text"
-                  value={settings.buttonTexts?.save || ''}
-                  onChange={(e) => setSettings({
-                    ...settings,
-                    buttonTexts: {
-                      ...settings.buttonTexts,
-                      save: e.target.value
-                    }
-                  })}
-                  placeholder="Salvează"
-                />
-              </div>
             </div>
 
             <button 

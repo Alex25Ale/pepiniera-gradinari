@@ -12,7 +12,7 @@ function ProductDetail() {
   const [error, setError] = useState(null);
   const [buttonTexts, setButtonTexts] = useState({
     backToProducts: 'Înapoi la Produse',
-    viewContactDetails: 'Vezi Detalii de Contact',
+    contactButton: 'Vezi Detalii de Contact',
     exploreMoreProducts: 'Explorează Mai Multe Produse'
   });
 
@@ -41,13 +41,11 @@ function ProductDetail() {
       const response = await fetch(`${API_BASE_URL}/api/settings`);
       if (response.ok) {
         const settings = await response.json();
-        if (settings.buttonTexts) {
-          setButtonTexts({
-            backToProducts: settings.buttonTexts.backToProducts || 'Înapoi la Produse',
-            viewContactDetails: settings.buttonTexts.viewContactDetails || 'Vezi Detalii de Contact',
-            exploreMoreProducts: settings.buttonTexts.exploreMoreProducts || 'Explorează Mai Multe Produse'
-          });
-        }
+        setButtonTexts({
+          backToProducts: settings.buttonTexts?.backToProducts || 'Înapoi la Produse',
+          contactButton: settings.homeContent?.contactButton || 'Vezi Detalii de Contact',
+          exploreMoreProducts: settings.buttonTexts?.exploreMoreProducts || 'Explorează Mai Multe Produse'
+        });
       }
     } catch (error) {
       console.error('Error fetching button texts:', error);
@@ -112,7 +110,7 @@ function ProductDetail() {
                 className="contact-btn primary"
                 onClick={() => navigate('/contact')}
               >
-{buttonTexts.viewContactDetails}
+{buttonTexts.contactButton}
               </button>
               <button 
                 className="back-to-products-btn"

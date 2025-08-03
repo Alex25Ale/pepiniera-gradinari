@@ -8,16 +8,8 @@
     "contactButton": "Vezi Detalii de Contact"
   },
   "buttonTexts": {
-    "exploreCollection": "Explorează Colecția Noastră",
-    "viewContactDetails": "Vezi Detalii de Contact",
-    "viewDetails": "Vezi Detalii",
     "backToProducts": "Înapoi la Produse",
-    "exploreMoreProducts": "Explorează Mai Multe Produse",
-    "addProduct": "Adaugă Produs",
-    "updateProduct": "Actualizează Produs",
-    "deleteProduct": "Șterge Produs",
-    "cancel": "Anulează",
-    "save": "Salvează"
+    "exploreMoreProducts": "Explorează Mai Multe Produse"
   },
   "aboutContent": {
     "title": "Despre Afacerea Noastră de Familie",

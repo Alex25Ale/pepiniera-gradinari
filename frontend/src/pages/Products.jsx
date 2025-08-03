@@ -9,10 +9,12 @@ function Products() {
   const [categories, setCategories] = useState(['Toate produsele']);
   const [selectedCategory, setSelectedCategory] = useState('Toate produsele');
   const [loading, setLoading] = useState(true);
+  const [contactButtonText, setContactButtonText] = useState('Vezi Detalii de Contact');
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchProducts();
+    fetchContactButtonText();
   }, []);
 
   const fetchProducts = async () => {
@@ -67,6 +69,20 @@ function Products() {
       setCategories(['All', 'Palm Trees', 'Christmas Trees', 'Ornamental Trees']);
     }
     setLoading(false);
+  };
+
+  const fetchContactButtonText = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/settings`);
+      if (response.ok) {
+        const settings = await response.json();
+        if (settings.homeContent?.contactButton) {
+          setContactButtonText(settings.homeContent.contactButton);
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching contact button text:', error);
+    }
   };
 
   const filteredProducts = selectedCategory === 'Toate produsele' 
@@ -134,7 +150,7 @@ function Products() {
                     className="contact-btn"
                     onClick={() => navigate('/contact')}
                   >
-                    Vezi Detalii de Contact
+                    {contactButtonText}
                   </button>
                 </div>
               </div>
