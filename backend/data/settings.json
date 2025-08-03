@@ -1,0 +1,31 @@
+{
+  "featuredCount": 3,
+  "aboutContent": {
+    "title": "Despre Afacerea Noastră de Familie",
+    "paragraphs": [
+      "Situată în comuna Grădinari, județul Giurgiu, pepiniera noastră este un punct de referință în sudul țării pentru plante ornamentale de calitate. Cu o experiență vastă și o pasiune reală pentru horticultură, cultivăm o gamă variată de arbori, arbuști și flori, direct din sursă, la prețuri de producător.",
+      "Oferim soluții atât pentru grădini private, cât și pentru proiecte de peisagistică urbană sau comercială. Toate plantele sunt crescute pe terenuri fertile, atent îngrijite și selecționate pentru rezistență, adaptabilitate și frumusețe.",
+      "Fie că ești pasionat de grădinărit sau profesionist în amenajări, echipa noastră îți oferă consultanță, livrare și sprijin în alegerea plantelor potrivite. Calitate, diversitate și seriozitate — acesta e angajamentul nostru pentru fiecare client."
+    ],
+    "expertise": [
+      "🌴 Palmieri & Arbori Exotici – Eleganță și unicitate în grădina ta",
+      "🎄 Brazi & Conifere – Soluții decorative pentru toate anotimpurile",
+      "🌸 Arbuști & Flori – Culoare, parfum și viață pentru orice spațiu",
+      "🌱 Plante direct de la producător – Calitate fără compromis și prețuri corecte"
+    ],
+    "image": "http://localhost:5000/uploads/1754168123849-418319167.jpg",
+    "expertiseTitle": "De ce să alegi Pepiniera Grădinari?"
+  },
+  "contactInfo": {
+    "phone": "+40 123 456 789",
+    "email": "info@pepiniera.ro",
+    "address": "Str. Gradinarilor nr. 15\nCluj-Napoca, Romania",
+    "hours": "Monday - Friday: 8:00 - 18:00\nSaturday: 9:00 - 16:00\nSunday: Closed",
+    "whatsapp": "+40784400969"
+  },
+  "socialLinks": {
+    "tiktok": "https://www.tiktok.com/@pepiniera.gradinari",
+    "facebook": "https://www.facebook.com/profile.php?id=100065061729965",
+    "instagram": ""
+  }
+}

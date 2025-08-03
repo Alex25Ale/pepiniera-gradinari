@@ -1,0 +1,71 @@
+[
+  {
+    "id": 1,
+    "name": "Palmier",
+    "category": "Copac",
+    "description": "Pepiniera Grădinari este un punct de referință în domeniul producției și vânzării de plante ornamentale în sudul țării, oferind o gamă variată de arbori, arbuști și flori la prețuri de producător. Situată în inima județului Giurgiu, în comuna Grădinari, pe Strada Magnoliilor nr. 158, pepiniera se bucură de un cadru natural generos și condiții ideale pentru dezvoltarea plantelor de grădină. Cu o experiență vastă în cultivarea și îngrijirea speciilor ornamentale, Pepiniera Grădinari se adresează atât persoanelor fizice, cât și firmelor specializate în amenajări peisagistice, oferind produse de calitate superioară direct din sursă.\nDiversitate bogată de plante ornamentale\nUnul dintre principalele atuuri ale Pepinierei Grădinari este diversitatea impresionantă de plante disponibile. Clienții pot alege dintr-o gamă extinsă de arbori și arbuști ornamentali, conifere de diferite dimensiuni, gard viu, flori perene, plante de talie mare pentru spații verzi ample, precum și specii exotice adaptate climatului local. Printre cele mai populare plante disponibile se numără: tuia smaragd, thuja occidentalis, buxus (cunoscut popular ca „cimisir”), lavandă, magnolii, hortensii, trandafiri de grădină, pini, brazi decorativi și arțari japonezi.\nFie că este vorba de amenajarea unei grădini private, a unui parc public sau a unui spațiu verde urban, pepiniera oferă soluții pentru orice proiect peisagistic. Gama de plante este atent selecționată pentru a oferi nu doar frumusețe estetică, ci și rezistență și adaptabilitate în condiții variate de sol și climă.\nCalitate garantată la prețuri de producător\nFiind o pepinieră cu producție proprie, Grădinari oferă clienților avantajul unor prețuri directe, fără adaosuri comerciale practicate de intermediari. Astfel, beneficiarii plătesc mai puțin, dar primesc plante de calitate superioară, crescute cu grijă și atenție în fiecare etapă a dezvoltării. Toate plantele sunt cultivate pe terenuri fertile, atent îngrijite și fertilizate, cu respect pentru standardele horticole.\nPrin respectarea calendarului de plantare și întreținere, pepiniera garantează sănătatea plantelor și o dezvoltare armonioasă după transplantare. În plus, echipa oferă asistență de specialitate privind alegerea plantelor potrivite pentru fiecare tip de sol sau expunere la lumină, precum și sfaturi privind întreținerea pe termen lung.\nServicii adiționale și consultanță\nÎn afară de vânzarea propriu-zisă a plantelor, Pepiniera Grădinari pune la dispoziția clienților o serie de servicii complementare. Printre acestea se numără consultanță pentru amenajări peisagistice, proiectare de grădini, livrare la domiciliu în județele limitrofe, dar și posibilitatea de achiziții en-gros pentru firme de profil.\nPersonalul pepinierei este bine pregătit și orientat către satisfacerea nevoilor clienților, oferind informații detaliate despre fiecare specie disponibilă. Indiferent dacă ești pasionat de grădinărit sau specialist în amenajări, echipa te va ghida în alegerea plantelor potrivite pentru proiectul tău.\nAcces facil și program flexibil\nPepiniera este ușor accesibilă atât din București, cât și din orașele din sudul țării, fiind situată la o distanță convenabilă pentru livrări rapide sau vizite directe în teren. Strada Magnoliilor din Comuna Grădinari, unde se află pepiniera, este o zonă liniștită, perfectă pentru explorarea ofertei într-un mediu relaxant.\nProgramul de funcționare este flexibil, adaptat nevoilor clienților, cu posibilitatea de programare prealabilă pentru consultanță personalizată sau vizite de grup.\nDe ce să alegi Pepiniera Grădinari?\nPrețuri de producător, fără adaosuri inutile;\nGamă variată de plante ornamentale, din specii autohtone și exotice;\nPlante sănătoase și bine dezvoltate, crescute în condiții controlate;\nAsistență de specialitate în alegerea și întreținerea plantelor;\nLivrare și consultanță pentru proiecte individuale sau comerciale.\nPentru cei care doresc să transforme grădina într-un spațiu de poveste sau să investească într-un proiect peisagistic de anvergură, Pepiniera Grădinari este partenerul ideal. Vino să descoperi frumusețea plantelor cultivate cu pasiune și să beneficiezi de calitate la prețuri corecte!\nContact și locație:\n📍 Strada Magnoliilor nr. 158, Comuna Grădinari, Județul Giurgiu\n📞 0764 952 289\n🌿 Vino cu încredere și alege verdele care înfrumusețează orice colț de natură!",
+    "price": "500Lei",
+    "image": "http://localhost:5000/uploads/1754216387861-552969249.jpg",
+    "featured": true,
+    "originalPrice": "500 Lei",
+    "discountedPrice": "300 Lei",
+    "images": [
+      "http://localhost:5000/uploads/1754216387861-552969249.jpg",
+      "http://localhost:5000/uploads/1754219318323-764070805.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Casuta Gard Viu",
+    "category": "Decoratiuni",
+    "description": "*Descriere",
+    "price": "1000 Lei",
+    "image": "http://localhost:5000/uploads/1754164137915-153248213.jpg",
+    "featured": true,
+    "discountedPrice": ""
+  },
+  {
+    "id": 3,
+    "name": "Bonsai",
+    "category": "Copac",
+    "description": "Pom Japonez",
+    "price": "5000 Lei",
+    "image": "http://localhost:5000/uploads/1754164665040-246095988.png",
+    "featured": true,
+    "discountedPrice": "",
+    "images": [
+      "http://localhost:5000/uploads/1754224536045-359202281.webp"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Euonymus Bravo",
+    "category": "Plante",
+    "description": "xxx",
+    "price": "5000 Lei",
+    "image": "http://localhost:5000/uploads/1754165113919-326839956.jpg",
+    "featured": true
+  },
+  {
+    "id": 6,
+    "name": "test",
+    "category": "test",
+    "description": "e",
+    "price": "15",
+    "originalPrice": null,
+    "discountedPrice": "15",
+    "image": "/images/placeholder.jpg",
+    "featured": false
+  },
+  {
+    "id": 7,
+    "name": "test2",
+    "category": "test",
+    "description": "t",
+    "price": "15",
+    "originalPrice": "25",
+    "discountedPrice": "15",
+    "image": "/images/placeholder.jpg",
+    "featured": false
+  }
+]

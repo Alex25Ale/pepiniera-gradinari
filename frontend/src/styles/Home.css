@@ -1,0 +1,208 @@
+.hero {
+  background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(74, 124, 37, 0.7)),
+              url('/images/hero-bg.jpg') center/cover;
+  color: white;
+  text-align: center;
+  padding: 120px 2rem 80px;
+  margin-bottom: 60px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.featured {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 60px;
+}
+
+.featured h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #2d5016;
+}
+
+.trees-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.tree-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tree-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.tree-image-container {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tree-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.3s ease;
+  image-rendering: crisp-edges;
+}
+
+.tree-image-container:hover img {
+  transform: scale(1.05);
+}
+
+.view-details-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 20px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 3;
+}
+
+.view-details-btn:hover {
+  background: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.view-details-btn span {
+  font-size: 16px;
+  filter: grayscale(1);
+  transition: filter 0.3s ease;
+}
+
+.view-details-btn:hover span {
+  filter: grayscale(0);
+}
+
+.tree-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.tree-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #2d5016;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.tree-card h3:hover {
+  color: #4a7c25;
+}
+
+.tree-card p {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.tree-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.tree-card .price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #4a7c25;
+  margin: 0;
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.original-price {
+  font-size: 1rem;
+  color: #999;
+  text-decoration: line-through;
+  font-weight: normal;
+  order: 2;
+}
+
+.discounted-price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #e74c3c;
+  order: 1;
+}
+
+
+
+.contact-btn {
+  background: #4a7c25;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: #2d5016;
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+  
+  .trees-grid {
+    grid-template-columns: 1fr;
+  }
+}
