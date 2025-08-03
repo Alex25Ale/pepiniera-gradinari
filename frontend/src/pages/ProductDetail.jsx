@@ -10,9 +10,15 @@ function ProductDetail() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [buttonTexts, setButtonTexts] = useState({
+    backToProducts: 'Înapoi la Produse',
+    viewContactDetails: 'Vezi Detalii de Contact',
+    exploreMoreProducts: 'Explorează Mai Multe Produse'
+  });
 
   useEffect(() => {
     fetchProduct();
+    fetchButtonTexts();
   }, [id]);
 
   const fetchProduct = async () => {
@@ -30,6 +36,24 @@ function ProductDetail() {
     setLoading(false);
   };
 
+  const fetchButtonTexts = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/settings`);
+      if (response.ok) {
+        const settings = await response.json();
+        if (settings.buttonTexts) {
+          setButtonTexts({
+            backToProducts: settings.buttonTexts.backToProducts || 'Înapoi la Produse',
+            viewContactDetails: settings.buttonTexts.viewContactDetails || 'Vezi Detalii de Contact',
+            exploreMoreProducts: settings.buttonTexts.exploreMoreProducts || 'Explorează Mai Multe Produse'
+          });
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching button texts:', error);
+    }
+  };
+
   if (loading) {
     return <div className="loading">Se încarcă produsul...</div>;
   }
@@ -40,7 +64,7 @@ function ProductDetail() {
         <h1>Produsul Nu A Fost Găsit</h1>
         <p>Produsul pe care îl căutați nu există.</p>
         <button onClick={() => navigate('/products')} className="back-btn">
-          ← Înapoi la Produse
+          ← {buttonTexts.backToProducts}
         </button>
       </div>
     );
@@ -50,7 +74,7 @@ function ProductDetail() {
     <div className="product-detail">
       <div className="product-detail-container">
         <button onClick={() => navigate('/products')} className="back-btn">
-          ← Înapoi la Produse
+          ← {buttonTexts.backToProducts}
         </button>
 
         <div className="product-detail-content">
@@ -88,13 +112,13 @@ function ProductDetail() {
                 className="contact-btn primary"
                 onClick={() => navigate('/contact')}
               >
-                Vezi Detalii de Contact
+{buttonTexts.viewContactDetails}
               </button>
               <button 
                 className="back-to-products-btn"
                 onClick={() => navigate('/products')}
               >
-                Explorează Mai Multe Produse
+{buttonTexts.exploreMoreProducts}
               </button>
             </div>
           </div>
