@@ -547,44 +547,38 @@ function Admin() {
                     <h3>Editează Produs</h3>
                     <form onSubmit={handleUpdateProduct}>
                       <div className="form-row">
-                        <input
-                          type="text"
-                          placeholder="Product Name"
-                          value={editForm.name}
-                          onChange={(e) => setEditForm({...editForm, name: e.target.value})}
-                          required
-                        />
-                        <input
-                          type="text"
-                          placeholder="Category"
-                          value={editForm.category}
-                          onChange={(e) => setEditForm({...editForm, category: e.target.value})}
-                          required
-                        />
+                      <input
+                      type="text"
+                      placeholder="Numele Produsului"
+                      value={editForm.name}
+                      onChange={(e) => setEditForm({...editForm, name: e.target.value})}
+                      required
+                      />
+                      <input
+                      type="text"
+                      placeholder="Categorie"
+                      value={editForm.category}
+                      onChange={(e) => setEditForm({...editForm, category: e.target.value})}
+                      required
+                      />
                       </div>
                       <div className="form-row">
-                        <input
-                          type="text"
-                          placeholder="Price (e.g., €150)"
-                          value={editForm.price}
-                          onChange={(e) => setEditForm({...editForm, price: e.target.value})}
-                          required
-                        />
-                        <input
-                          type="text"
-                          placeholder="Image URL"
-                          value={editForm.image}
-                          onChange={(e) => setEditForm({...editForm, image: e.target.value})}
-                        />
+                      <input
+                      type="text"
+                      placeholder="Preț (exemplu: 150 Lei)"
+                      value={editForm.price}
+                      onChange={(e) => setEditForm({...editForm, price: e.target.value})}
+                      required
+                      />
                       </div>
                       <div className="form-row discount-row">
-                        <label className="discount-label">Set Discount (optional):</label>
-                        <input
-                          type="text"
-                          placeholder="Discounted Price (optional, e.g., €120)"
+                      <label className="discount-label">Reducere (opțional):</label>
+                      <input
+                      type="text"
+                        placeholder="Preț redus (opțional, prețul final, exemplu: 100 Lei)"
                           value={editForm.discountedPrice}
                           onChange={(e) => setEditForm({...editForm, discountedPrice: e.target.value})}
-                        />
+                      />
                       </div>
                       
                       <div className="image-upload-section">
