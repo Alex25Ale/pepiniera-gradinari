@@ -113,6 +113,13 @@ if (!fs.existsSync(ADMIN_FILE)) {
 if (!fs.existsSync(SETTINGS_FILE)) {
   const defaultSettings = {
     featuredCount: 3,
+    homeContent: {
+      heroTitle: "Transformă-ți Grădina",
+      heroSubtitle: "Arbori decorativi de calitate, palmieri și brazi de Crăciun pentru orice ocazie",
+      heroButton: "Explorează Colecția Noastră",
+      featuredTitle: "Favoriții Grădinii",
+      contactButton: "Vezi Detalii de Contact"
+    },
     aboutContent: {
       title: "Despre Afacerea Noastră de Familie",
       paragraphs: [

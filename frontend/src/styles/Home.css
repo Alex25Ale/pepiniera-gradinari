@@ -1,9 +1,8 @@
 .hero {
-  background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(74, 124, 37, 0.7)),
-              url('/images/hero-bg.jpg') center/cover;
+  background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(74, 124, 37, 0.7));
   color: white;
   text-align: center;
-  padding: 120px 2rem 80px;
+  padding: 108px 2rem 72px; /* Reduced by 10% */
   margin-bottom: 60px;
 }
 
@@ -70,9 +69,6 @@
   cursor: pointer;
   overflow: hidden;
   height: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .tree-card img {
@@ -85,6 +81,10 @@
   image-rendering: auto;
   backface-visibility: hidden;
   transform: translateZ(0);
+  border: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
 }
 
 .tree-image-container:hover img {

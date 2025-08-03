@@ -263,6 +263,8 @@ function Admin() {
     }
   };
 
+
+
   const handleAddProduct = async (e) => {
     e.preventDefault();
     
@@ -676,7 +678,7 @@ function Admin() {
             <h2>Configurează Pagina Principală</h2>
             
             <div className="content-section">
-              <label>Titlul Principal (Hero):</label>
+              <label>Titlul Principal:</label>
               <input
                 type="text"
                 value={settings.homeContent?.heroTitle || ''}
@@ -708,7 +710,7 @@ function Admin() {
             </div>
 
             <div className="content-section">
-              <label>Second title:</label>
+              <label>Titlul Secundar:</label>
               <input
                 type="text"
                 value={settings.homeContent?.featuredTitle || ''}

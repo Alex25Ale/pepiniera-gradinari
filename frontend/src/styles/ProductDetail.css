@@ -46,16 +46,25 @@
   justify-content: center;
   align-items: flex-start;
   position: relative;
+  background: #f8f9fa;
+  border-radius: 15px;
+  overflow: hidden;
+  min-height: 600px;
 }
 
 .product-main-image {
   width: 100%;
   max-width: 500px;
-  height: auto;
+  height: 600px;
   max-height: 600px;
   object-fit: cover;
   border-radius: 15px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  border: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  display: block;
 }
 
 .product-info-section {

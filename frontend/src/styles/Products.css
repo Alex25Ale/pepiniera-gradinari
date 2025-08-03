@@ -71,9 +71,6 @@
   cursor: pointer;
   overflow: hidden;
   height: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .product-card img {
@@ -86,6 +83,10 @@
   image-rendering: auto;
   backface-visibility: hidden;
   transform: translateZ(0);
+  border: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
 }
 
 .product-image-container:hover img {
