@@ -6,8 +6,8 @@ import '../styles/Products.css';
 
 function Products() {
   const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState(['All']);
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [categories, setCategories] = useState(['Toate produsele']);
+  const [selectedCategory, setSelectedCategory] = useState('Toate produsele');
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ function Products() {
         setProducts(data);
         
         // Extract unique categories
-        const cats = ['All', ...new Set(data.map(p => p.category))];
+        const cats = ['Toate produsele', ...new Set(data.map(p => p.category))];
         setCategories(cats);
       }
     } catch (error) {
@@ -69,7 +69,7 @@ function Products() {
     setLoading(false);
   };
 
-  const filteredProducts = selectedCategory === 'All' 
+  const filteredProducts = selectedCategory === 'Toate produsele' 
     ? products 
     : products.filter(p => p.category === selectedCategory);
 

@@ -4,7 +4,7 @@ import '../styles/About.css';
 
 function About() {
   const [aboutContent, setAboutContent] = useState({
-    title: "About Our Family Business",
+    title: "",
     paragraphs: [],
     expertise: []
   });
