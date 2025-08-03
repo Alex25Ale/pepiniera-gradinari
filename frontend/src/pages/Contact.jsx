@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import SEOHead from '../components/SEOHead';
 import API_BASE_URL from '../config';
 import '../styles/Contact.css';
 
@@ -38,6 +39,11 @@ function Contact() {
 
   return (
     <div className="contact">
+      <SEOHead 
+        title="Contact - Pepiniera Grădinari | Comandă Arbori Decorativi Online"
+        description="Contactează Pepiniera Grădinari pentru oferte personalizate la arbori decorativi, palmieri și brazi de Crăciun. Telefon, email și locația noastră în România."
+        keywords={['contact pepiniera', 'comanda arbori', 'telefon pepiniera', 'adresa pepiniera']}
+      />
       <div className="contact-container">
         <h1>Contactează-ne</h1>
         

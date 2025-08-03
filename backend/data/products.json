@@ -12,7 +12,8 @@
     "images": [
       "https://pepiniera-gradinari-production.up.railway.app/uploads/1754216387861-552969249.jpg",
       "https://pepiniera-gradinari-production.up.railway.app/uploads/1754219318323-764070805.jpg"
-    ]
+    ],
+    "slug": "palmier"
   },
   {
     "id": 2,
@@ -22,7 +23,8 @@
     "price": "1000 Lei",
     "image": "https://pepiniera-gradinari-production.up.railway.app/uploads/1754164137915-153248213.jpg",
     "featured": true,
-    "discountedPrice": ""
+    "discountedPrice": "",
+    "slug": "casuta-gard-viu"
   },
   {
     "id": 3,
@@ -35,7 +37,8 @@
     "discountedPrice": "",
     "images": [
       "https://pepiniera-gradinari-production.up.railway.app/uploads/1754224536045-359202281.webp"
-    ]
+    ],
+    "slug": "bonsai"
   },
   {
     "id": 5,
@@ -44,7 +47,8 @@
     "description": "xxx",
     "price": "5000 Lei",
     "image": "https://pepiniera-gradinari-production.up.railway.app/uploads/1754165113919-326839956.jpg",
-    "featured": true
+    "featured": true,
+    "slug": "euonymus-bravo"
   },
   {
     "id": 6,
@@ -55,7 +59,8 @@
     "originalPrice": null,
     "discountedPrice": "15",
     "image": "/images/placeholder.jpg",
-    "featured": false
+    "featured": false,
+    "slug": "test"
   },
   {
     "id": 7,
@@ -66,6 +71,7 @@
     "originalPrice": "25",
     "discountedPrice": "15",
     "image": "/images/placeholder.jpg",
-    "featured": false
+    "featured": false,
+    "slug": "test2"
   }
 ]

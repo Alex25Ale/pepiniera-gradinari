@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ImageCarousel from '../components/ImageCarousel';
+import SEOHead from '../components/SEOHead';
 import API_BASE_URL from '../config';
 import '../styles/Products.css';
 
@@ -95,6 +96,11 @@ function Products() {
 
   return (
     <div className="products">
+      <SEOHead 
+        title="Produse - Arbori Decorativi și Plante Ornamentale | Pepiniera Grădinari"
+        description="Descoperă gama completă de arbori decorativi, palmieri, brazi de Crăciun și plante ornamentale de la Pepiniera Grădinari. Calitate garantată și preturi avantajoase în România."
+        keywords={['catalog produse', 'arbori decorativi preturi', 'palmieri de vanzare', 'brazi craciumnn preturi']}
+      />
       <div className="products-container">
         <h1>Produsele Noastre</h1>
         
@@ -112,7 +118,7 @@ function Products() {
 
         <div className="products-grid">
           {filteredProducts.map(product => (
-            <div key={product.id} className="product-card" onClick={() => navigate(`/products/${product.id}`)}>
+            <div key={product.id} className="product-card" onClick={() => navigate(`/products/${product.slug || product.id}`)}>
               <div className="product-image-container">
                 <ImageCarousel 
                   images={product.images || [product.image]} 
@@ -121,13 +127,13 @@ function Products() {
                 />
                 <button className="view-details-btn" onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/products/${product.id}`);
+                  navigate(`/products/${product.slug || product.id}`);
                 }}>
                   <span>👁</span>
                 </button>
               </div>
               <div className="product-info">
-                <h3 onClick={() => navigate(`/products/${product.id}`)}>{product.name}</h3>
+                <h3 onClick={() => navigate(`/products/${product.slug || product.id}`)}>{product.name}</h3>
                 <p className="category">{product.category}</p>
                 <p className="description">
                   {product.description.length > 100 

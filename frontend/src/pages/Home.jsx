@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ImageCarousel from '../components/ImageCarousel';
+import SEOHead from '../components/SEOHead';
 import API_BASE_URL from '../config';
 import '../styles/Home.css';
 
@@ -76,6 +77,11 @@ function Home() {
 
   return (
     <div className="home">
+      <SEOHead 
+        title="Pepiniera Grădinari - Arbori Decorativi, Palmieri și Brazi de Crăciun | România"
+        description="Transformă-ți grădina cu arbori decorativi de calitate de la Pepiniera Grădinari. Specializați în palmieri, brazi de Crăciun, pomi fructiferi și amenajare grădini în România."
+        keywords={['arbori decorativi românia', 'palmieri pentru gradina', 'brazi craciunn', 'pomi fructiferi', 'amenajare peisagistica']}
+      />
       <section className="hero">
         <div className="hero-content">
           <h1>{homeContent.heroTitle || 'Transformă-ți Grădina'}</h1>
@@ -91,7 +97,7 @@ function Home() {
           <h2>{homeContent.featuredTitle || 'Favoriții Grădinii'}</h2>
           <div className="trees-grid">
             {featuredTrees.map(tree => (
-            <div key={tree.id} className="tree-card" onClick={() => navigate(`/products/${tree.id}`)}>
+            <div key={tree.id} className="tree-card" onClick={() => navigate(`/products/${tree.slug || tree.id}`)}>
               <div className="tree-image-container">
                 <ImageCarousel 
                   images={tree.images || [tree.image]} 
@@ -100,13 +106,13 @@ function Home() {
                 />
                 <button className="view-details-btn" onClick={(e) => {
                   e.stopPropagation();
-                  navigate(`/products/${tree.id}`);
+                  navigate(`/products/${tree.slug || tree.id}`);
                 }}>
                   <span>👁</span>
                 </button>
               </div>
               <div className="tree-info">
-                <h3 onClick={() => navigate(`/products/${tree.id}`)}>{tree.name}</h3>
+                <h3 onClick={() => navigate(`/products/${tree.slug || tree.id}`)}>{tree.name}</h3>
                 <p>
                   {tree.description.length > 80 
                     ? `${tree.description.substring(0, 80)}...` 

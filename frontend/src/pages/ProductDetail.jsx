@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ImageCarousel from '../components/ImageCarousel';
+import SEOHead from '../components/SEOHead';
 import API_BASE_URL from '../config';
 import '../styles/ProductDetail.css';
 
 function ProductDetail() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -19,11 +20,11 @@ function ProductDetail() {
   useEffect(() => {
     fetchProduct();
     fetchButtonTexts();
-  }, [id]);
+  }, [slug]);
 
   const fetchProduct = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/products/${id}`);
+      const response = await fetch(`${API_BASE_URL}/api/products/${slug}`);
       if (response.ok) {
         const data = await response.json();
         setProduct(data);
@@ -70,6 +71,15 @@ function ProductDetail() {
 
   return (
     <div className="product-detail">
+      <SEOHead 
+        title={`${product.name} - ${product.category} | Pepiniera Grădinari`}
+        description={`${product.name} - ${product.description} Preț: ${product.discountedPrice || product.price} RON. Comandă online de la Pepiniera Grădinari, specializați în arbori decorativi și amenajare grădini în România.`}
+        keywords={[product.name.toLowerCase(), product.category.toLowerCase(), 'comanda online', 'livriare']}
+        productName={product.name}
+        productCategory={product.category}
+        productPrice={product.discountedPrice || product.price}
+        image={product.images?.[0] || product.image}
+      />
       <div className="product-detail-container">
         <button onClick={() => navigate('/products')} className="back-btn">
           ← {buttonTexts.backToProducts}

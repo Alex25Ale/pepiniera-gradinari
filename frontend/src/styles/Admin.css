@@ -284,12 +284,12 @@
 .cancel-btn {
   background: #6c757d;
   color: white;
-  padding: 8px 16px;
-  font-weight: normal;
+  padding: 12px 24px;
+  font-weight: 500;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .cancel-btn:hover {

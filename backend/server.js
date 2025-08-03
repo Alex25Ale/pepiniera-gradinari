@@ -19,6 +19,25 @@ const DATA_FILE = path.join(__dirname, 'data', 'products.json');
 const ADMIN_FILE = path.join(__dirname, 'data', 'admin.json');
 const SETTINGS_FILE = path.join(__dirname, 'data', 'settings.json');
 
+// Function to generate URL-friendly slugs from Romanian text
+function generateSlug(text) {
+  return text
+    .toLowerCase()
+    // Replace Romanian special characters
+    .replace(/ă/g, 'a')
+    .replace(/â/g, 'a')
+    .replace(/î/g, 'i')
+    .replace(/ș/g, 's')
+    .replace(/ț/g, 't')
+    // Remove any non-alphanumeric characters except hyphens
+    .replace(/[^a-z0-9\s-]/g, '')
+    // Replace spaces and multiple hyphens with single hyphen
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    // Remove leading and trailing hyphens
+    .replace(/^-+|-+$/g, '');
+}
+
 // Ensure data and uploads directories exist
 if (!fs.existsSync(path.join(__dirname, 'data'))) {
   fs.mkdirSync(path.join(__dirname, 'data'));
@@ -59,6 +78,28 @@ const upload = multer({
 if (!fs.existsSync(DATA_FILE)) {
   // Initialize with empty products array
   fs.writeFileSync(DATA_FILE, JSON.stringify([], null, 2));
+}
+
+// Migration: Add slugs to existing products that don't have them
+function migrateProductSlugs() {
+  try {
+    const products = readProducts();
+    let needsUpdate = false;
+    
+    products.forEach(product => {
+      if (!product.slug && product.name) {
+        product.slug = generateSlug(product.name);
+        needsUpdate = true;
+      }
+    });
+    
+    if (needsUpdate) {
+      writeProducts(products);
+      console.log('✅ Product slugs migration completed');
+    }
+  } catch (error) {
+    console.error('Error during product slugs migration:', error);
+  }
 }
 
 if (!fs.existsSync(ADMIN_FILE)) {
@@ -131,6 +172,9 @@ const writeSettings = (settings) => {
   fs.writeFileSync(SETTINGS_FILE, JSON.stringify(settings, null, 2));
 };
 
+// Run migrations
+migrateProductSlugs();
+
 // Routes
 
 // Get all products
@@ -156,10 +200,18 @@ app.get('/api/products/featured', (req, res) => {
   res.json(featured.slice(0, featuredCount));
 });
 
-// Get single product
-app.get('/api/products/:id', (req, res) => {
+// Get single product by slug
+app.get('/api/products/:slug', (req, res) => {
   const products = readProducts();
-  const product = products.find(p => p.id === parseInt(req.params.id));
+  const slug = req.params.slug;
+  
+  // Try to find by slug first, fallback to ID for backwards compatibility
+  let product = products.find(p => p.slug === slug);
+  
+  // If not found by slug, try by ID (for backwards compatibility)
+  if (!product && !isNaN(slug)) {
+    product = products.find(p => p.id === parseInt(slug));
+  }
   
   if (!product) {
     return res.status(404).json({ message: 'Product not found' });
@@ -236,6 +288,7 @@ app.post('/api/products', (req, res) => {
   const newProduct = {
     id: Math.max(...products.map(p => p.id), 0) + 1,
     name,
+    slug: generateSlug(name),
     category,
     description,
     price,
@@ -261,7 +314,14 @@ app.put('/api/products/:id', (req, res) => {
     return res.status(404).json({ message: 'Product not found' });
   }
   
-  products[index] = { ...products[index], ...req.body, id };
+  const updatedProduct = { ...products[index], ...req.body, id };
+  
+  // Regenerate slug if name has changed
+  if (req.body.name && req.body.name !== products[index].name) {
+    updatedProduct.slug = generateSlug(req.body.name);
+  }
+  
+  products[index] = updatedProduct;
   writeProducts(products);
   
   res.json(products[index]);
@@ -326,6 +386,57 @@ app.put('/api/settings', (req, res) => {
     res.json(updatedSettings);
   } catch (error) {
     res.status(500).json({ message: 'Error updating settings: ' + error.message });
+  }
+});
+
+// Generate dynamic sitemap
+app.get('/sitemap.xml', (req, res) => {
+  try {
+    const products = readProducts();
+    const baseUrl = BASE_URL;
+    
+    let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${baseUrl}/</loc>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>${baseUrl}/about</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>${baseUrl}/products</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>${baseUrl}/contact</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>`;
+
+    // Add product pages
+    products.forEach(product => {
+      const slug = product.slug || product.id;
+      sitemap += `
+  <url>
+    <loc>${baseUrl}/products/${slug}</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>`;
+    });
+
+    sitemap += `
+</urlset>`;
+
+    res.set('Content-Type', 'application/xml');
+    res.send(sitemap);
+  } catch (error) {
+    console.error('Error generating sitemap:', error);
+    res.status(500).send('Error generating sitemap');
   }
 });
 

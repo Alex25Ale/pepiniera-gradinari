@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import SEOHead from '../components/SEOHead';
 import API_BASE_URL from '../config';
 import '../styles/About.css';
 
@@ -29,6 +30,11 @@ function About() {
 
   return (
     <div className="about">
+      <SEOHead 
+        title="Despre Noi - Pepiniera de Familie cu Tradiție | Pepiniera Grădinari"
+        description="Afacere de familie cu peste trei generații de experiență în cultivarea arborilor decorativi. Specializați în palmieri, brazi de Crăciun și amenajare grădini în România."
+        keywords={['pepiniera de familie', 'experienta in gradinarii', 'traditie', 'cultivatori arbori']}
+      />
       <div className="about-container">
         <h1>{aboutContent.title}</h1>
         
