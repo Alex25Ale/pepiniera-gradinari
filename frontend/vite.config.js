@@ -5,5 +5,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000
+  },
+  preview: {
+    port: 4173,
+    host: '0.0.0.0',
+    allowedHosts: ['artistic-vision-production.up.railway.app']
   }
 })

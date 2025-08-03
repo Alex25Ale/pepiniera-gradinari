@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import API_BASE_URL from '../config';
 import '../styles/WhatsAppButton.css';
 
 function WhatsAppButton() {
@@ -15,7 +16,7 @@ function WhatsAppButton() {
 
   const fetchWhatsAppNumber = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/settings');
+      const response = await fetch(`${API_BASE_URL}/api/settings`);
       if (response.ok) {
         const settings = await response.json();
         if (settings.contactInfo?.whatsapp) {
