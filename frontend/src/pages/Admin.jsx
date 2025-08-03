@@ -60,6 +60,28 @@ function Admin() {
       facebook: '',
       instagram: '',
       tiktok: ''
+    },
+    seoSettings: {
+      homePage: {
+        title: '',
+        description: '',
+        keywords: ''
+      },
+      aboutPage: {
+        title: '',
+        description: '',
+        keywords: ''
+      },
+      productsPage: {
+        title: '',
+        description: '',
+        keywords: ''
+      },
+      contactPage: {
+        title: '',
+        description: '',
+        keywords: ''
+      }
     }
   });
   const [activeTab, setActiveTab] = useState('products');
@@ -433,6 +455,12 @@ function Admin() {
           onClick={() => setActiveTab('settings')}
         >
           Setări
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === 'seo' ? 'active' : ''}`}
+          onClick={() => setActiveTab('seo')}
+        >
+          SEO
         </button>
       </div>
 
@@ -1110,6 +1138,233 @@ function Admin() {
                 className="save-btn"
               >
                 Salvează Linkurile Sociale
+              </button>
+            </div>
+          </section>
+        )}
+
+        {activeTab === 'seo' && (
+          <section className="seo-settings add-product">
+            <h2>Setări SEO</h2>
+            <p>Configurează titlurile și descrierile care apar în căutările Google și în tab-ul browserului.</p>
+            
+            <div className="content-section">
+              <h3>Pagina Principală</h3>
+              <div className="form-group">
+                <label>Titlu SEO:</label>
+                <input
+                  type="text"
+                  value={settings.seoSettings?.homePage?.title || 'Pepiniera Grădinari - Arbori Decorativi, Palmieri și Brazi de Crăciun | România'}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    seoSettings: {
+                      ...settings.seoSettings,
+                      homePage: { ...settings.seoSettings?.homePage, title: e.target.value }
+                    }
+                  })}
+                  placeholder="Titlul care apare în tab-ul browserului și în rezultatele Google"
+                />
+              </div>
+              <div className="form-group">
+                <label>Descriere SEO:</label>
+                <textarea
+                  value={settings.seoSettings?.homePage?.description || 'Transformă-ți grădina cu arbori decorativi de calitate de la Pepiniera Grădinari. Specializați în palmieri, brazi de Crăciun, pomi fructiferi și amenajare grădini în România.'}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    seoSettings: {
+                      ...settings.seoSettings,
+                      homePage: { ...settings.seoSettings?.homePage, description: e.target.value }
+                    }
+                  })}
+                  placeholder="Descrierea care apare sub titlu în rezultatele Google"
+                  rows="3"
+                />
+              </div>
+              <div className="form-group">
+                <label>Cuvinte Cheie:</label>
+                <input
+                  type="text"
+                  value={settings.seoSettings?.homePage?.keywords || 'arbori decorativi românia, palmieri pentru gradina, brazi craciunn, pomi fructiferi, amenajare peisagistica'}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    seoSettings: {
+                      ...settings.seoSettings,
+                      homePage: { ...settings.seoSettings?.homePage, keywords: e.target.value }
+                    }
+                  })}
+                  placeholder="Cuvinte cheie separate prin virgulă pentru optimizare SEO"
+                />
+              </div>
+              <button 
+                onClick={() => updateSettings({ seoSettings: settings.seoSettings })}
+                className="save-btn"
+              >
+                Salvează SEO Pagina Principală
+              </button>
+            </div>
+
+            <div className="content-section">
+              <h3>Pagina Despre</h3>
+              <div className="form-group">
+                <label>Titlu SEO:</label>
+                <input
+                  type="text"
+                  value={settings.seoSettings?.aboutPage?.title || 'Despre Noi - Pepiniera de Familie cu Tradiție | Pepiniera Grădinari'}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    seoSettings: {
+                      ...settings.seoSettings,
+                      aboutPage: { ...settings.seoSettings?.aboutPage, title: e.target.value }
+                    }
+                  })}
+                  placeholder="Titlul care apare în tab-ul browserului și în rezultatele Google"
+                />
+              </div>
+              <div className="form-group">
+                <label>Descriere SEO:</label>
+                <textarea
+                  value={settings.seoSettings?.aboutPage?.description || 'Afacere de familie cu peste trei generații de experiență în cultivarea arborilor decorativi. Specializați în palmieri, brazi de Crăciun și amenajare grădini în România.'}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    seoSettings: {
+                      ...settings.seoSettings,
+                      aboutPage: { ...settings.seoSettings?.aboutPage, description: e.target.value }
+                    }
+                  })}
+                  placeholder="Descrierea care apare sub titlu în rezultatele Google"
+                  rows="3"
+                />
+              </div>
+              <div className="form-group">
+                <label>Cuvinte Cheie:</label>
+                <input
+                  type="text"
+                  value={settings.seoSettings?.aboutPage?.keywords || 'pepiniera de familie, experienta in gradinarii, traditie, cultivatori arbori'}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    seoSettings: {
+                      ...settings.seoSettings,
+                      aboutPage: { ...settings.seoSettings?.aboutPage, keywords: e.target.value }
+                    }
+                  })}
+                  placeholder="Cuvinte cheie separate prin virgulă pentru optimizare SEO"
+                />
+              </div>
+              <button 
+                onClick={() => updateSettings({ seoSettings: settings.seoSettings })}
+                className="save-btn"
+              >
+                Salvează SEO Despre
+              </button>
+            </div>
+
+            <div className="content-section">
+              <h3>Pagina Produse</h3>
+              <div className="form-group">
+                <label>Titlu SEO:</label>
+                <input
+                  type="text"
+                  value={settings.seoSettings?.productsPage?.title || 'Produse - Arbori Decorativi și Plante Ornamentale | Pepiniera Grădinari'}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    seoSettings: {
+                      ...settings.seoSettings,
+                      productsPage: { ...settings.seoSettings?.productsPage, title: e.target.value }
+                    }
+                  })}
+                  placeholder="Titlul care apare în tab-ul browserului și în rezultatele Google"
+                />
+              </div>
+              <div className="form-group">
+                <label>Descriere SEO:</label>
+                <textarea
+                  value={settings.seoSettings?.productsPage?.description || 'Descoperă gama completă de arbori decorativi, palmieri, brazi de Crăciun și plante ornamentale de la Pepiniera Grădinari. Calitate garantată și preturi avantajoase în România.'}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    seoSettings: {
+                      ...settings.seoSettings,
+                      productsPage: { ...settings.seoSettings?.productsPage, description: e.target.value }
+                    }
+                  })}
+                  placeholder="Descrierea care apare sub titlu în rezultatele Google"
+                  rows="3"
+                />
+              </div>
+              <div className="form-group">
+                <label>Cuvinte Cheie:</label>
+                <input
+                  type="text"
+                  value={settings.seoSettings?.productsPage?.keywords || 'catalog produse, arbori decorativi preturi, palmieri de vanzare, brazi craciunnn preturi'}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    seoSettings: {
+                      ...settings.seoSettings,
+                      productsPage: { ...settings.seoSettings?.productsPage, keywords: e.target.value }
+                    }
+                  })}
+                  placeholder="Cuvinte cheie separate prin virgulă pentru optimizare SEO"
+                />
+              </div>
+              <button 
+                onClick={() => updateSettings({ seoSettings: settings.seoSettings })}
+                className="save-btn"
+              >
+                Salvează SEO Produse
+              </button>
+            </div>
+
+            <div className="content-section">
+              <h3>Pagina Contact</h3>
+              <div className="form-group">
+                <label>Titlu SEO:</label>
+                <input
+                  type="text"
+                  value={settings.seoSettings?.contactPage?.title || 'Contact - Pepiniera Grădinari | Comandă Arbori Decorativi Online'}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    seoSettings: {
+                      ...settings.seoSettings,
+                      contactPage: { ...settings.seoSettings?.contactPage, title: e.target.value }
+                    }
+                  })}
+                  placeholder="Titlul care apare în tab-ul browserului și în rezultatele Google"
+                />
+              </div>
+              <div className="form-group">
+                <label>Descriere SEO:</label>
+                <textarea
+                  value={settings.seoSettings?.contactPage?.description || 'Contactează Pepiniera Grădinari pentru oferte personalizate la arbori decorativi, palmieri și brazi de Crăciun. Telefon, email și locația noastră în România.'}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    seoSettings: {
+                      ...settings.seoSettings,
+                      contactPage: { ...settings.seoSettings?.contactPage, description: e.target.value }
+                    }
+                  })}
+                  placeholder="Descrierea care apare sub titlu în rezultatele Google"
+                  rows="3"
+                />
+              </div>
+              <div className="form-group">
+                <label>Cuvinte Cheie:</label>
+                <input
+                  type="text"
+                  value={settings.seoSettings?.contactPage?.keywords || 'contact pepiniera, comanda arbori, telefon pepiniera, adresa pepiniera'}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    seoSettings: {
+                      ...settings.seoSettings,
+                      contactPage: { ...settings.seoSettings?.contactPage, keywords: e.target.value }
+                    }
+                  })}
+                  placeholder="Cuvinte cheie separate prin virgulă pentru optimizare SEO"
+                />
+              </div>
+              <button 
+                onClick={() => updateSettings({ seoSettings: settings.seoSettings })}
+                className="save-btn"
+              >
+                Salvează SEO Contact
               </button>
             </div>
           </section>

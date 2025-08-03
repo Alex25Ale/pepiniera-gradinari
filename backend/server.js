@@ -140,6 +140,28 @@ if (!fs.existsSync(SETTINGS_FILE)) {
       facebook: "",
       instagram: "",
       tiktok: ""
+    },
+    seoSettings: {
+      homePage: {
+        title: "Pepiniera Grădinari - Arbori Decorativi, Palmieri și Brazi de Crăciun | România",
+        description: "Transformă-ți grădina cu arbori decorativi de calitate de la Pepiniera Grădinari. Specializați în palmieri, brazi de Crăciun, pomi fructiferi și amenajare grădini în România.",
+        keywords: "arbori decorativi românia, palmieri pentru gradina, brazi craciunn, pomi fructiferi, amenajare peisagistica"
+      },
+      aboutPage: {
+        title: "Despre Noi - Pepiniera de Familie cu Tradiție | Pepiniera Grădinari",
+        description: "Afacere de familie cu peste trei generații de experiență în cultivarea arborilor decorativi. Specializați în palmieri, brazi de Crăciun și amenajare grădini în România.",
+        keywords: "pepiniera de familie, experienta in gradinarii, traditie, cultivatori arbori"
+      },
+      productsPage: {
+        title: "Produse - Arbori Decorativi și Plante Ornamentale | Pepiniera Grădinari", 
+        description: "Descoperă gama completă de arbori decorativi, palmieri, brazi de Crăciun și plante ornamentale de la Pepiniera Grădinari. Calitate garantată și preturi avantajoase în România.",
+        keywords: "catalog produse, arbori decorativi preturi, palmieri de vanzare, brazi craciunnn preturi"
+      },
+      contactPage: {
+        title: "Contact - Pepiniera Grădinari | Comandă Arbori Decorativi Online",
+        description: "Contactează Pepiniera Grădinari pentru oferte personalizate la arbori decorativi, palmieri și brazi de Crăciun. Telefon, email și locația noastră în România.",
+        keywords: "contact pepiniera, comanda arbori, telefon pepiniera, adresa pepiniera"
+      }
     }
   };
   fs.writeFileSync(SETTINGS_FILE, JSON.stringify(defaultSettings, null, 2));

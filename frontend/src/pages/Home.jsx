@@ -16,6 +16,11 @@ function Home() {
     exploreButton: ''
   });
   const [featuredCount, setFeaturedCount] = useState(3);
+  const [seoSettings, setSeoSettings] = useState({
+    title: '',
+    description: '',
+    keywords: ''
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -69,6 +74,9 @@ function Home() {
         if (settings.featuredCount !== undefined) {
           setFeaturedCount(settings.featuredCount);
         }
+        if (settings.seoSettings?.homePage) {
+          setSeoSettings(settings.seoSettings.homePage);
+        }
       }
     } catch (error) {
       console.error('Error fetching home content:', error);
@@ -78,9 +86,9 @@ function Home() {
   return (
     <div className="home">
       <SEOHead 
-        title="Pepiniera Grădinari - Arbori Decorativi, Palmieri și Brazi de Crăciun | România"
-        description="Transformă-ți grădina cu arbori decorativi de calitate de la Pepiniera Grădinari. Specializați în palmieri, brazi de Crăciun, pomi fructiferi și amenajare grădini în România."
-        keywords={['arbori decorativi românia', 'palmieri pentru gradina', 'brazi craciunn', 'pomi fructiferi', 'amenajare peisagistica']}
+        title={seoSettings.title || "Pepiniera Grădinari - Arbori Decorativi, Palmieri și Brazi de Crăciun | România"}
+        description={seoSettings.description || "Transformă-ți grădina cu arbori decorativi de calitate de la Pepiniera Grădinari. Specializați în palmieri, brazi de Crăciun, pomi fructiferi și amenajare grădini în România."}
+        keywords={seoSettings.keywords ? seoSettings.keywords.split(', ') : ['arbori decorativi românia', 'palmieri pentru gradina', 'brazi craciunn', 'pomi fructiferi', 'amenajare peisagistica']}
       />
       <section className="hero">
         <div className="hero-content">

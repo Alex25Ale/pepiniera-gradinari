@@ -11,11 +11,17 @@ function Products() {
   const [selectedCategory, setSelectedCategory] = useState('Toate produsele');
   const [loading, setLoading] = useState(true);
   const [contactButtonText, setContactButtonText] = useState('Vezi Detalii de Contact');
+  const [seoSettings, setSeoSettings] = useState({
+    title: '',
+    description: '',
+    keywords: ''
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchProducts();
     fetchContactButtonText();
+    fetchSeoSettings();
   }, []);
 
   const fetchProducts = async () => {
@@ -86,6 +92,20 @@ function Products() {
     }
   };
 
+  const fetchSeoSettings = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/settings`);
+      if (response.ok) {
+        const settings = await response.json();
+        if (settings.seoSettings?.productsPage) {
+          setSeoSettings(settings.seoSettings.productsPage);
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching SEO settings:', error);
+    }
+  };
+
   const filteredProducts = selectedCategory === 'Toate produsele' 
     ? products 
     : products.filter(p => p.category === selectedCategory);
@@ -97,9 +117,9 @@ function Products() {
   return (
     <div className="products">
       <SEOHead 
-        title="Produse - Arbori Decorativi și Plante Ornamentale | Pepiniera Grădinari"
-        description="Descoperă gama completă de arbori decorativi, palmieri, brazi de Crăciun și plante ornamentale de la Pepiniera Grădinari. Calitate garantată și preturi avantajoase în România."
-        keywords={['catalog produse', 'arbori decorativi preturi', 'palmieri de vanzare', 'brazi craciumnn preturi']}
+        title={seoSettings.title || "Produse - Arbori Decorativi și Plante Ornamentale | Pepiniera Grădinari"}
+        description={seoSettings.description || "Descoperă gama completă de arbori decorativi, palmieri, brazi de Crăciun și plante ornamentale de la Pepiniera Grădinari. Calitate garantată și preturi avantajoase în România."}
+        keywords={seoSettings.keywords ? seoSettings.keywords.split(', ') : ['catalog produse', 'arbori decorativi preturi', 'palmieri de vanzare', 'brazi craciumnn preturi']}
       />
       <div className="products-container">
         <h1>Produsele Noastre</h1>

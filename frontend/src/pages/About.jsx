@@ -9,6 +9,11 @@ function About() {
     paragraphs: [],
     expertise: []
   });
+  const [seoSettings, setSeoSettings] = useState({
+    title: '',
+    description: '',
+    keywords: ''
+  });
 
   useEffect(() => {
     fetchAboutContent();
@@ -22,6 +27,9 @@ function About() {
         if (settings.aboutContent) {
           setAboutContent(settings.aboutContent);
         }
+        if (settings.seoSettings?.aboutPage) {
+          setSeoSettings(settings.seoSettings.aboutPage);
+        }
       }
     } catch (error) {
       console.error('Error fetching about content:', error);
@@ -31,9 +39,9 @@ function About() {
   return (
     <div className="about">
       <SEOHead 
-        title="Despre Noi - Pepiniera de Familie cu Tradiție | Pepiniera Grădinari"
-        description="Afacere de familie cu peste trei generații de experiență în cultivarea arborilor decorativi. Specializați în palmieri, brazi de Crăciun și amenajare grădini în România."
-        keywords={['pepiniera de familie', 'experienta in gradinarii', 'traditie', 'cultivatori arbori']}
+        title={seoSettings.title || "Despre Noi - Pepiniera de Familie cu Tradiție | Pepiniera Grădinari"}
+        description={seoSettings.description || "Afacere de familie cu peste trei generații de experiență în cultivarea arborilor decorativi. Specializați în palmieri, brazi de Crăciun și amenajare grădini în România."}
+        keywords={seoSettings.keywords ? seoSettings.keywords.split(', ') : ['pepiniera de familie', 'experienta in gradinarii', 'traditie', 'cultivatori arbori']}
       />
       <div className="about-container">
         <h1>{aboutContent.title}</h1>

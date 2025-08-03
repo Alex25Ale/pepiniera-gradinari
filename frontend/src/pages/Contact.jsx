@@ -15,6 +15,11 @@ function Contact() {
     instagram: '',
     tiktok: ''
   });
+  const [seoSettings, setSeoSettings] = useState({
+    title: '',
+    description: '',
+    keywords: ''
+  });
 
   useEffect(() => {
     fetchContactInfo();
@@ -31,6 +36,9 @@ function Contact() {
         if (settings.socialLinks) {
           setSocialLinks(settings.socialLinks);
         }
+        if (settings.seoSettings?.contactPage) {
+          setSeoSettings(settings.seoSettings.contactPage);
+        }
       }
     } catch (error) {
       console.error('Error fetching contact info:', error);
@@ -40,9 +48,9 @@ function Contact() {
   return (
     <div className="contact">
       <SEOHead 
-        title="Contact - Pepiniera Grădinari | Comandă Arbori Decorativi Online"
-        description="Contactează Pepiniera Grădinari pentru oferte personalizate la arbori decorativi, palmieri și brazi de Crăciun. Telefon, email și locația noastră în România."
-        keywords={['contact pepiniera', 'comanda arbori', 'telefon pepiniera', 'adresa pepiniera']}
+        title={seoSettings.title || "Contact - Pepiniera Grădinari | Comandă Arbori Decorativi Online"}
+        description={seoSettings.description || "Contactează Pepiniera Grădinari pentru oferte personalizate la arbori decorativi, palmieri și brazi de Crăciun. Telefon, email și locația noastră în România."}
+        keywords={seoSettings.keywords ? seoSettings.keywords.split(', ') : ['contact pepiniera', 'comanda arbori', 'telefon pepiniera', 'adresa pepiniera']}
       />
       <div className="contact-container">
         <h1>Contactează-ne</h1>
