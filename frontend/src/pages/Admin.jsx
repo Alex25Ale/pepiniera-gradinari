@@ -660,7 +660,7 @@ function Admin() {
           <section className="homepage-panel">
             <h2>Configurează Pagina Principală</h2>
             
-            <div className="setting-group">
+            <div className="content-section">
               <label>Titlul Principal (Hero):</label>
               <input
                 type="text"
@@ -676,8 +676,8 @@ function Admin() {
               />
             </div>
 
-            <div className="setting-group">
-              <label>Subtitlul Principal (Hero):</label>
+            <div className="content-section">
+              <label>Text sub titlu:</label>
               <textarea
                 value={settings.homeContent?.heroSubtitle || ''}
                 onChange={(e) => setSettings({
@@ -692,24 +692,8 @@ function Admin() {
               />
             </div>
 
-            <div className="setting-group">
-              <label>Text Buton Principal:</label>
-              <input
-                type="text"
-                value={settings.homeContent?.heroButton || ''}
-                onChange={(e) => setSettings({
-                  ...settings,
-                  homeContent: {
-                    ...settings.homeContent,
-                    heroButton: e.target.value
-                  }
-                })}
-                placeholder="Explorează Colecția Noastră"
-              />
-            </div>
-
-            <div className="setting-group">
-              <label>Titlul Secțiunii Favoriți:</label>
+            <div className="content-section">
+              <label>Second title:</label>
               <input
                 type="text"
                 value={settings.homeContent?.featuredTitle || ''}
@@ -721,33 +705,6 @@ function Admin() {
                   }
                 })}
                 placeholder="Favoriții Grădinii"
-              />
-            </div>
-
-            <div className="setting-group">
-              <label>Text Buton Contact:</label>
-              <input
-                type="text"
-                value={settings.homeContent?.contactButton || ''}
-                onChange={(e) => setSettings({
-                  ...settings,
-                  homeContent: {
-                    ...settings.homeContent,
-                    contactButton: e.target.value
-                  }
-                })}
-                placeholder="Vezi Detalii de Contact"
-              />
-            </div>
-
-            <div className="setting-group">
-              <label>Numărul de produse favoriți pe pagina principală (0 = ascunde secțiunea):</label>
-              <input
-                type="number"
-                min="0"
-                max="20"
-                value={settings.featuredCount || 0}
-                onChange={(e) => setSettings({...settings, featuredCount: parseInt(e.target.value) || 0})}
               />
             </div>
 
@@ -765,7 +722,39 @@ function Admin() {
             <h2>Configurează Textul Butoanelor</h2>
             
             <div className="buttons-grid">
-              <div className="setting-group">
+              <div className="content-section">
+                <label>Text Buton Principal:</label>
+                <input
+                  type="text"
+                  value={settings.homeContent?.heroButton || ''}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    homeContent: {
+                      ...settings.homeContent,
+                      heroButton: e.target.value
+                    }
+                  })}
+                  placeholder="Explorează Colecția Noastră"
+                />
+              </div>
+
+              <div className="content-section">
+                <label>Text Buton Contact:</label>
+                <input
+                  type="text"
+                  value={settings.homeContent?.contactButton || ''}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    homeContent: {
+                      ...settings.homeContent,
+                      contactButton: e.target.value
+                    }
+                  })}
+                  placeholder="Vezi Detalii de Contact"
+                />
+              </div>
+
+              <div className="content-section">
                 <label>Explorează Colecția:</label>
                 <input
                   type="text"
@@ -781,7 +770,7 @@ function Admin() {
                 />
               </div>
 
-              <div className="setting-group">
+              <div className="content-section">
                 <label>Vezi Detalii de Contact:</label>
                 <input
                   type="text"
@@ -797,7 +786,7 @@ function Admin() {
                 />
               </div>
 
-              <div className="setting-group">
+              <div className="content-section">
                 <label>Vezi Detalii:</label>
                 <input
                   type="text"
@@ -813,7 +802,7 @@ function Admin() {
                 />
               </div>
 
-              <div className="setting-group">
+              <div className="content-section">
                 <label>Înapoi la Produse:</label>
                 <input
                   type="text"
@@ -829,7 +818,7 @@ function Admin() {
                 />
               </div>
 
-              <div className="setting-group">
+              <div className="content-section">
                 <label>Explorează Mai Multe Produse:</label>
                 <input
                   type="text"
@@ -845,7 +834,7 @@ function Admin() {
                 />
               </div>
 
-              <div className="setting-group">
+              <div className="content-section">
                 <label>Adaugă Produs:</label>
                 <input
                   type="text"
@@ -861,7 +850,7 @@ function Admin() {
                 />
               </div>
 
-              <div className="setting-group">
+              <div className="content-section">
                 <label>Actualizează Produs:</label>
                 <input
                   type="text"
@@ -877,7 +866,7 @@ function Admin() {
                 />
               </div>
 
-              <div className="setting-group">
+              <div className="content-section">
                 <label>Șterge Produs:</label>
                 <input
                   type="text"
@@ -893,7 +882,7 @@ function Admin() {
                 />
               </div>
 
-              <div className="setting-group">
+              <div className="content-section">
                 <label>Anulează:</label>
                 <input
                   type="text"
@@ -909,7 +898,7 @@ function Admin() {
                 />
               </div>
 
-              <div className="setting-group">
+              <div className="content-section">
                 <label>Salvează:</label>
                 <input
                   type="text"
@@ -939,6 +928,23 @@ function Admin() {
           <section className="settings-panel">
             <h2>Setări Website</h2>
             
+            <div className="setting-group">
+              <label>Numărul de produse favoriți pe pagina principală (0 = ascunde secțiunea):</label>
+              <input
+                type="number"
+                min="0"
+                max="20"
+                value={settings.featuredCount || 0}
+                onChange={(e) => setSettings({...settings, featuredCount: parseInt(e.target.value) || 0})}
+              />
+              <button 
+                onClick={() => updateSettings({ featuredCount: settings.featuredCount })}
+                className="save-btn"
+              >
+                Salvează
+              </button>
+            </div>
+
             <div className="setting-group">
               <h3>Administrează Produsele Favorite</h3>
               <div className="featured-products-grid">
