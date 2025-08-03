@@ -30,6 +30,25 @@ function Admin() {
   const [uploading, setUploading] = useState(false);
   const [settings, setSettings] = useState({
     featuredCount: 3,
+    homeContent: {
+      heroTitle: '',
+      heroSubtitle: '',
+      heroButton: '',
+      featuredTitle: '',
+      contactButton: ''
+    },
+    buttonTexts: {
+      exploreCollection: '',
+      viewContactDetails: '',
+      viewDetails: '',
+      backToProducts: '',
+      exploreMoreProducts: '',
+      addProduct: '',
+      updateProduct: '',
+      deleteProduct: '',
+      cancel: '',
+      save: ''
+    },
     aboutContent: {
       title: '',
       paragraphs: [],
@@ -405,6 +424,18 @@ function Admin() {
           Administrează Conținut
         </button>
         <button 
+          className={`tab-btn ${activeTab === 'homepage' ? 'active' : ''}`}
+          onClick={() => setActiveTab('homepage')}
+        >
+          Pagina Principală
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === 'buttons' ? 'active' : ''}`}
+          onClick={() => setActiveTab('buttons')}
+        >
+          Butoane
+        </button>
+        <button 
           className={`tab-btn ${activeTab === 'settings' ? 'active' : ''}`}
           onClick={() => setActiveTab('settings')}
         >
@@ -625,27 +656,289 @@ function Admin() {
             </>
         )}
 
+        {activeTab === 'homepage' && (
+          <section className="homepage-panel">
+            <h2>Configurează Pagina Principală</h2>
+            
+            <div className="setting-group">
+              <label>Titlul Principal (Hero):</label>
+              <input
+                type="text"
+                value={settings.homeContent?.heroTitle || ''}
+                onChange={(e) => setSettings({
+                  ...settings,
+                  homeContent: {
+                    ...settings.homeContent,
+                    heroTitle: e.target.value
+                  }
+                })}
+                placeholder="Transformă-ți Grădina"
+              />
+            </div>
+
+            <div className="setting-group">
+              <label>Subtitlul Principal (Hero):</label>
+              <textarea
+                value={settings.homeContent?.heroSubtitle || ''}
+                onChange={(e) => setSettings({
+                  ...settings,
+                  homeContent: {
+                    ...settings.homeContent,
+                    heroSubtitle: e.target.value
+                  }
+                })}
+                placeholder="Arbori decorativi de calitate, palmieri și brazi de Crăciun pentru orice ocazie"
+                rows="3"
+              />
+            </div>
+
+            <div className="setting-group">
+              <label>Text Buton Principal:</label>
+              <input
+                type="text"
+                value={settings.homeContent?.heroButton || ''}
+                onChange={(e) => setSettings({
+                  ...settings,
+                  homeContent: {
+                    ...settings.homeContent,
+                    heroButton: e.target.value
+                  }
+                })}
+                placeholder="Explorează Colecția Noastră"
+              />
+            </div>
+
+            <div className="setting-group">
+              <label>Titlul Secțiunii Favoriți:</label>
+              <input
+                type="text"
+                value={settings.homeContent?.featuredTitle || ''}
+                onChange={(e) => setSettings({
+                  ...settings,
+                  homeContent: {
+                    ...settings.homeContent,
+                    featuredTitle: e.target.value
+                  }
+                })}
+                placeholder="Favoriții Grădinii"
+              />
+            </div>
+
+            <div className="setting-group">
+              <label>Text Buton Contact:</label>
+              <input
+                type="text"
+                value={settings.homeContent?.contactButton || ''}
+                onChange={(e) => setSettings({
+                  ...settings,
+                  homeContent: {
+                    ...settings.homeContent,
+                    contactButton: e.target.value
+                  }
+                })}
+                placeholder="Vezi Detalii de Contact"
+              />
+            </div>
+
+            <div className="setting-group">
+              <label>Numărul de produse favoriți pe pagina principală (0 = ascunde secțiunea):</label>
+              <input
+                type="number"
+                min="0"
+                max="20"
+                value={settings.featuredCount || 0}
+                onChange={(e) => setSettings({...settings, featuredCount: parseInt(e.target.value) || 0})}
+              />
+            </div>
+
+            <button 
+              onClick={() => updateSettings(settings)}
+              className="save-btn"
+            >
+              Salvează Modificările
+            </button>
+          </section>
+        )}
+
+        {activeTab === 'buttons' && (
+          <section className="buttons-panel">
+            <h2>Configurează Textul Butoanelor</h2>
+            
+            <div className="buttons-grid">
+              <div className="setting-group">
+                <label>Explorează Colecția:</label>
+                <input
+                  type="text"
+                  value={settings.buttonTexts?.exploreCollection || ''}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    buttonTexts: {
+                      ...settings.buttonTexts,
+                      exploreCollection: e.target.value
+                    }
+                  })}
+                  placeholder="Explorează Colecția Noastră"
+                />
+              </div>
+
+              <div className="setting-group">
+                <label>Vezi Detalii de Contact:</label>
+                <input
+                  type="text"
+                  value={settings.buttonTexts?.viewContactDetails || ''}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    buttonTexts: {
+                      ...settings.buttonTexts,
+                      viewContactDetails: e.target.value
+                    }
+                  })}
+                  placeholder="Vezi Detalii de Contact"
+                />
+              </div>
+
+              <div className="setting-group">
+                <label>Vezi Detalii:</label>
+                <input
+                  type="text"
+                  value={settings.buttonTexts?.viewDetails || ''}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    buttonTexts: {
+                      ...settings.buttonTexts,
+                      viewDetails: e.target.value
+                    }
+                  })}
+                  placeholder="Vezi Detalii"
+                />
+              </div>
+
+              <div className="setting-group">
+                <label>Înapoi la Produse:</label>
+                <input
+                  type="text"
+                  value={settings.buttonTexts?.backToProducts || ''}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    buttonTexts: {
+                      ...settings.buttonTexts,
+                      backToProducts: e.target.value
+                    }
+                  })}
+                  placeholder="Înapoi la Produse"
+                />
+              </div>
+
+              <div className="setting-group">
+                <label>Explorează Mai Multe Produse:</label>
+                <input
+                  type="text"
+                  value={settings.buttonTexts?.exploreMoreProducts || ''}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    buttonTexts: {
+                      ...settings.buttonTexts,
+                      exploreMoreProducts: e.target.value
+                    }
+                  })}
+                  placeholder="Explorează Mai Multe Produse"
+                />
+              </div>
+
+              <div className="setting-group">
+                <label>Adaugă Produs:</label>
+                <input
+                  type="text"
+                  value={settings.buttonTexts?.addProduct || ''}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    buttonTexts: {
+                      ...settings.buttonTexts,
+                      addProduct: e.target.value
+                    }
+                  })}
+                  placeholder="Adaugă Produs"
+                />
+              </div>
+
+              <div className="setting-group">
+                <label>Actualizează Produs:</label>
+                <input
+                  type="text"
+                  value={settings.buttonTexts?.updateProduct || ''}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    buttonTexts: {
+                      ...settings.buttonTexts,
+                      updateProduct: e.target.value
+                    }
+                  })}
+                  placeholder="Actualizează Produs"
+                />
+              </div>
+
+              <div className="setting-group">
+                <label>Șterge Produs:</label>
+                <input
+                  type="text"
+                  value={settings.buttonTexts?.deleteProduct || ''}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    buttonTexts: {
+                      ...settings.buttonTexts,
+                      deleteProduct: e.target.value
+                    }
+                  })}
+                  placeholder="Șterge Produs"
+                />
+              </div>
+
+              <div className="setting-group">
+                <label>Anulează:</label>
+                <input
+                  type="text"
+                  value={settings.buttonTexts?.cancel || ''}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    buttonTexts: {
+                      ...settings.buttonTexts,
+                      cancel: e.target.value
+                    }
+                  })}
+                  placeholder="Anulează"
+                />
+              </div>
+
+              <div className="setting-group">
+                <label>Salvează:</label>
+                <input
+                  type="text"
+                  value={settings.buttonTexts?.save || ''}
+                  onChange={(e) => setSettings({
+                    ...settings,
+                    buttonTexts: {
+                      ...settings.buttonTexts,
+                      save: e.target.value
+                    }
+                  })}
+                  placeholder="Salvează"
+                />
+              </div>
+            </div>
+
+            <button 
+              onClick={() => updateSettings(settings)}
+              className="save-btn"
+            >
+              Salvează Modificările
+            </button>
+          </section>
+        )}
+
         {activeTab === 'settings' && (
           <section className="settings-panel">
             <h2>Setări Website</h2>
             
-            <div className="setting-group">
-              <label>Numărul de arbori favoriți pe pagina principală:</label>
-              <input
-                type="number"
-                min="1"
-                max="10"
-                value={settings.featuredCount || 3}
-                onChange={(e) => setSettings({...settings, featuredCount: parseInt(e.target.value)})}
-              />
-              <button 
-                onClick={() => updateSettings({ featuredCount: settings.featuredCount })}
-                className="save-btn"
-              >
-                Salvează
-              </button>
-            </div>
-
             <div className="setting-group">
               <h3>Administrează Produsele Favorite</h3>
               <div className="featured-products-grid">

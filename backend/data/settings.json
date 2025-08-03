@@ -1,5 +1,24 @@
 {
   "featuredCount": 3,
+  "homeContent": {
+    "heroTitle": "Transformă-ți Grădina",
+    "heroSubtitle": "Arbori decorativi de calitate, palmieri și brazi de Crăciun pentru orice ocazie",
+    "heroButton": "Explorează Colecția Noastră",
+    "featuredTitle": "Favoriții Grădinii",
+    "contactButton": "Vezi Detalii de Contact"
+  },
+  "buttonTexts": {
+    "exploreCollection": "Explorează Colecția Noastră",
+    "viewContactDetails": "Vezi Detalii de Contact",
+    "viewDetails": "Vezi Detalii",
+    "backToProducts": "Înapoi la Produse",
+    "exploreMoreProducts": "Explorează Mai Multe Produse",
+    "addProduct": "Adaugă Produs",
+    "updateProduct": "Actualizează Produs",
+    "deleteProduct": "Șterge Produs",
+    "cancel": "Anulează",
+    "save": "Salvează"
+  },
   "aboutContent": {
     "title": "Despre Afacerea Noastră de Familie",
     "paragraphs": [

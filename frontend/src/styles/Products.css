@@ -75,7 +75,9 @@
   object-position: center;
   display: block;
   transition: transform 0.3s ease;
-  image-rendering: crisp-edges;
+  image-rendering: auto;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .product-image-container:hover img {

@@ -6,11 +6,20 @@ import '../styles/Home.css';
 
 function Home() {
   const [featuredTrees, setFeaturedTrees] = useState([]);
+  const [homeContent, setHomeContent] = useState({
+    heroTitle: '',
+    heroSubtitle: '',
+    heroButton: '',
+    featuredTitle: '',
+    contactButton: '',
+    exploreButton: ''
+  });
+  const [featuredCount, setFeaturedCount] = useState(3);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch featured trees from backend
     fetchFeaturedTrees();
+    fetchHomeContent();
   }, []);
 
   const fetchFeaturedTrees = async () => {
@@ -48,22 +57,40 @@ function Home() {
     }
   };
 
+  const fetchHomeContent = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/settings`);
+      if (response.ok) {
+        const settings = await response.json();
+        if (settings.homeContent) {
+          setHomeContent(settings.homeContent);
+        }
+        if (settings.featuredCount !== undefined) {
+          setFeaturedCount(settings.featuredCount);
+        }
+      }
+    } catch (error) {
+      console.error('Error fetching home content:', error);
+    }
+  };
+
   return (
     <div className="home">
       <section className="hero">
         <div className="hero-content">
-          <h1>Transformă-ți Grădina</h1>
-          <p>Arbori decorativi de calitate, palmieri și brazi de Crăciun pentru orice ocazie</p>
+          <h1>{homeContent.heroTitle || 'Transformă-ți Grădina'}</h1>
+          <p>{homeContent.heroSubtitle || 'Arbori decorativi de calitate, palmieri și brazi de Crăciun pentru orice ocazie'}</p>
           <button className="cta-button" onClick={() => navigate('/products')}>
-            Explorează Colecția Noastră
+            {homeContent.heroButton || 'Explorează Colecția Noastră'}
           </button>
         </div>
       </section>
 
-      <section className="featured">
-        <h2>Favoriții Grădinii</h2>
-        <div className="trees-grid">
-          {featuredTrees.map(tree => (
+      {featuredCount > 0 && featuredTrees.length > 0 && (
+        <section className="featured">
+          <h2>{homeContent.featuredTitle || 'Favoriții Grădinii'}</h2>
+          <div className="trees-grid">
+            {featuredTrees.map(tree => (
             <div key={tree.id} className="tree-card" onClick={() => navigate(`/products/${tree.id}`)}>
               <div className="tree-image-container">
                 <ImageCarousel 
@@ -101,14 +128,15 @@ function Home() {
                     className="contact-btn"
                     onClick={() => navigate('/contact')}
                   >
-                    Vezi Detalii de Contact
+                    {homeContent.contactButton || 'Vezi Detalii de Contact'}
                   </button>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
