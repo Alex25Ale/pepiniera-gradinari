@@ -174,7 +174,10 @@ function Products() {
                   </div>
                   <button 
                     className="contact-btn"
-                    onClick={() => navigate('/contact')}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/contact');
+                    }}
                   >
                     {contactButtonText}
                   </button>

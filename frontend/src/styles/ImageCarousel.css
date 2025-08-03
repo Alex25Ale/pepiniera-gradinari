@@ -29,6 +29,13 @@
   height: 250px;
 }
 
+.image-carousel.large {
+  max-width: 586px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .image-carousel.large .carousel-main {
   height: 400px;
   max-height: 500px;
@@ -77,6 +84,8 @@
   margin-top: 10px;
   overflow-x: auto;
   padding: 5px 0;
+  width: 100%;
+  min-width: 0;
 }
 
 .thumbnail {

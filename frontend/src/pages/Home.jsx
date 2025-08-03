@@ -140,7 +140,10 @@ function Home() {
                   </div>
                   <button 
                     className="contact-btn"
-                    onClick={() => navigate('/contact')}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/contact');
+                    }}
                   >
                     {homeContent.contactButton || 'Vezi Detalii de Contact'}
                   </button>
