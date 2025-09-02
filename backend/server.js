@@ -7,7 +7,9 @@ const sharp = require('sharp');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const BASE_URL = process.env.BASE_URL || 'https://pepiniera-gradinari-production.up.railway.app';
+const API_URL = process.env.NODE_ENV === 'production' 
+  ? process.env.RENDER_EXTERNAL_URL || 'https://pepiniera-api.onrender.com'
+  : 'http://localhost:5000';
 
 // Middleware
 app.use(cors());
@@ -295,12 +297,12 @@ app.post('/api/upload', upload.single('image'), async (req, res) => {
     // Delete original file to save space
     fs.unlinkSync(originalPath);
     
-    const imageUrl = `${BASE_URL}/uploads/${optimizedFilename}`;
+    const imageUrl = `${API_URL}/uploads/${optimizedFilename}`;
     res.json({ imageUrl });
   } catch (error) {
     console.error('Image optimization error:', error);
     // Fallback to original file if optimization fails
-    const imageUrl = `${BASE_URL}/uploads/${req.file.filename}`;
+    const imageUrl = `${API_URL}/uploads/${req.file.filename}`;
     res.json({ imageUrl });
   }
 });
