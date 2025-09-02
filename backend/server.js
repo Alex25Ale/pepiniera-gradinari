@@ -16,6 +16,26 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
+// Simple visit logger
+app.use((req, res, next) => {
+  const timestamp = new Date().toLocaleString('ro-RO', { 
+    timeZone: 'Europe/Bucharest',
+    year: 'numeric', 
+    month: '2-digit', 
+    day: '2-digit',
+    hour: '2-digit', 
+    minute: '2-digit',
+    second: '2-digit'
+  });
+  
+  // Only log page visits (not API calls)
+  if (!req.path.startsWith('/api/')) {
+    console.log(`🌐 VISIT: ${timestamp} - ${req.method} ${req.path}`);
+  }
+  
+  next();
+});
+
 // Simple file-based database
 const DATA_FILE = path.join(__dirname, 'data', 'products.json');
 const ADMIN_FILE = path.join(__dirname, 'data', 'admin.json');
