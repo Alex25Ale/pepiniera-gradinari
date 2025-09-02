@@ -428,6 +428,23 @@ app.get('/api/settings', (req, res) => {
   res.json(settings);
 });
 
+// Log page visits
+app.post('/api/log-visit', (req, res) => {
+  const { page } = req.body;
+  const timestamp = new Date().toLocaleString('ro-RO', { 
+    timeZone: 'Europe/Bucharest',
+    year: 'numeric', 
+    month: '2-digit', 
+    day: '2-digit',
+    hour: '2-digit', 
+    minute: '2-digit',
+    second: '2-digit'
+  });
+  
+  console.log(`📄 PAGE VISIT: ${timestamp} - ${page}`);
+  res.json({ logged: true });
+});
+
 // Update settings (admin only)
 app.put('/api/settings', (req, res) => {
   try {
