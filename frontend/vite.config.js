@@ -6,9 +6,11 @@ export default defineConfig({
   server: {
     port: 3000
   },
+  build: {
+    outDir: 'dist'
+  },
   preview: {
     port: 4173,
-    host: '0.0.0.0',
-    allowedHosts: ['artistic-vision-production.up.railway.app']
+    host: '0.0.0.0'
   }
 })
